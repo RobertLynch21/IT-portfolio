@@ -3,7 +3,7 @@ import { Github, Linkedin, ExternalLink, Code, Server, Database } from "lucide-r
 
 export default function Home() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden min-h-screen">
       {/* Background Elements for Depth */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20"></div>
       <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-gradient-to-br from-blue-400/10 to-purple-400/10 blur-3xl"></div>
@@ -53,7 +53,6 @@ export default function Home() {
                 className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-8 py-4 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 About Me
-                <ExternalLink className="h-4 w-4" />
               </Link>
               <Link
                 href="/blog"
