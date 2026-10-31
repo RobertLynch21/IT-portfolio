@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robert Lynch | SOC Analyst & Security-Focused IT Engineer</title>
+<meta name="description" content="Robert Lynch: security-focused IT Support Engineer moving into a Tier 1 SOC Analyst role. Log analysis, alert triage, Linux, Python automation.">
+<meta property="og:title" content="Robert Lynch | SOC Analyst & Security-Focused IT Engineer">
+<meta property="og:description" content="Security-focused IT Support Engineer moving into a Tier 1 SOC Analyst role.">
+<meta property="og:url" content="https://robertlynch.dev">
+<meta name="theme-color" content="#0b0f14">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230b0f14'/><text x='5' y='22' font-family='monospace' font-size='16' fill='%2338e8a0'>&gt;_</text></svg>">
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-2: #111720;
+    --card: #141b25;
+    --line: #233040;
+    --text: #e6edf3;
+    --muted: #94a3b4;
+    --accent: #38e8a0;
+    --accent-dim: rgba(56, 232, 160, 0.12);
+    --warn: #f5b84d;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11, 15, 20, 0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .logo { font-family: var(--mono); color: var(--text); font-weight: 600; }
+  .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 26px; }
+  nav ul a { color: var(--muted); font-size: 15px; }
+  nav ul a:hover { color: var(--text); text-decoration: none; }
+
+  /* Hero */
+  .hero { padding: 96px 0 72px; border-bottom: 1px solid var(--line); }
+  .prompt { font-family: var(--mono); color: var(--accent); font-size: 15px; margin-bottom: 18px; }
+  .prompt .cursor { display: inline-block; width: 9px; height: 17px; background: var(--accent); vertical-align: -3px; margin-left: 4px; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .prompt .cursor { animation: none; } html { scroll-behavior: auto; } }
+  h1 { font-size: clamp(38px, 6vw, 58px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .role { font-size: clamp(19px, 2.6vw, 24px); color: var(--muted); margin-bottom: 22px; }
+  .role strong { color: var(--text); font-weight: 600; }
+  .lede { max-width: 680px; color: var(--muted); margin-bottom: 30px; }
+  .status {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--mono); font-size: 13.5px; color: var(--accent);
+    background: var(--accent-dim); border: 1px solid rgba(56,232,160,.3);
+    padding: 6px 13px; border-radius: 999px; margin-bottom: 30px;
+  }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 11px 20px; border-radius: 8px; font-weight: 600; font-size: 15px;
+    border: 1px solid var(--line); color: var(--text); background: var(--card);
+  }
+  .btn:hover { border-color: var(--accent); text-decoration: none; }
+  .btn.primary { background: var(--accent); color: #062014; border-color: var(--accent); }
+  .btn.primary:hover { filter: brightness(1.08); }
+
+  /* Sections */
+  section { padding: 76px 0; border-bottom: 1px solid var(--line); }
+  .label { font-family: var(--mono); font-size: 13.5px; color: var(--accent); margin-bottom: 8px; }
+  h2 { font-size: 30px; letter-spacing: -0.01em; margin-bottom: 30px; }
+  h3 { font-size: 19px; margin-bottom: 4px; }
+  .muted { color: var(--muted); }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 44px; }
+  .about-grid p + p { margin-top: 16px; }
+  .facts { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; font-family: var(--mono); font-size: 14px; }
+  .facts div { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .facts div:last-child { border-bottom: 0; }
+  .facts dt { color: var(--muted); }
+  .facts dd { text-align: right; }
+
+  /* Projects */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px;
+    display: flex; flex-direction: column; transition: border-color .15s, transform .15s;
+  }
+  .card:hover { border-color: rgba(56,232,160,.5); transform: translateY(-2px); }
+  .card .tag { font-family: var(--mono); font-size: 12.5px; color: var(--accent); margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: 15.5px; margin: 8px 0 16px; flex: 1; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .chip { font-family: var(--mono); font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 2px 8px; }
+  .card a.more { font-size: 14.5px; font-weight: 600; }
+  .subhead { margin: 44px 0 18px; font-size: 15px; font-family: var(--mono); color: var(--muted); }
+
+  /* Experience */
+  .timeline { border-left: 2px solid var(--line); margin-left: 6px; }
+  .job { position: relative; padding: 0 0 38px 30px; }
+  .job:last-child { padding-bottom: 0; }
+  .job::before {
+    content: ""; position: absolute; left: -7px; top: 7px; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .job .meta { font-family: var(--mono); font-size: 13.5px; color: var(--muted); margin-bottom: 10px; }
+  .job ul { padding-left: 18px; color: var(--muted); font-size: 15.5px; }
+  .job li { margin-bottom: 5px; }
+  .job li::marker { color: var(--accent); }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
+  .skill-box { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+  .skill-box h3 { font-size: 15px; font-family: var(--mono); color: var(--accent); margin-bottom: 12px; font-weight: 500; }
+  .skill-box ul { list-style: none; color: var(--muted); font-size: 15px; }
+  .skill-box li { padding: 3px 0; }
+
+  /* Creds */
+  .creds { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cred { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; }
+  .cred .when { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .cred .pill { display: inline-block; font-family: var(--mono); font-size: 12px; padding: 2px 9px; border-radius: 999px; margin-bottom: 10px; }
+  .pill.ok { background: var(--accent-dim); color: var(--accent); }
+  .pill.wip { background: rgba(245,184,77,.12); color: var(--warn); }
+
+  /* Contact */
+  .contact { text-align: center; border-bottom: 0; }
+  .contact p { max-width: 560px; margin: 0 auto 28px; color: var(--muted); }
+  .contact .btns { justify-content: center; }
+  footer { padding: 30px 0; text-align: center; font-family: var(--mono); font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+
+  @media (max-width: 760px) {
+    nav ul { display: none; }
+    .hero { padding: 64px 0 52px; }
+    section { padding: 56px 0; }
+    .about-grid, .creds { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">robert<span>@</span>lynch:~$</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="prompt">$ whoami<span class="cursor"></span></p>
+    <h1>Robert Lynch</h1>
+    <p class="role"><strong>SOC Analyst (Tier 1) candidate</strong> · Security-Focused IT Support Engineer</p>
+    <p class="lede">I triage endpoint issues to separate user error and misconfiguration from real security events, document them clearly, and write Python to automate the tedious parts. Now moving from MSP support into security operations.</p>
+    <div class="status">Open to remote SOC &amp; security roles</div>
+    <div class="btns">
+      <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+      <a class="btn" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/robertflynch" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="about">
+  <div class="wrap">
+    <p class="label">// about</p>
+    <h2>From support desk to security operations</h2>
+    <div class="about-grid">
+      <div>
+        <p>I'm an IT Support Engineer at an MSP, where I support endpoints for multiple clients across Windows, macOS and Linux. Before that I led a deskside support team at CSX. Much of the job is investigation: working out whether a problem is hardware, the user, a misconfiguration, or something that needs a security review.</p>
+        <p>I also spent seven years building and maintaining web applications. I've implemented authentication, input validation and role-based access control, so I understand how the systems I'm defending are put together.</p>
+        <p>I'm earning CompTIA Security+ and a B.S. in Information Technology (Cybersecurity) at Strayer University. Outside work I build my own security tools and practice on Hack The Box.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>role</dt><dd>IT Support Engineer</dd></div>
+        <div><dt>target</dt><dd>SOC Analyst, Tier 1</dd></div>
+        <div><dt>location</dt><dd>Florida · Remote</dd></div>
+        <div><dt>cert</dt><dd>NinjaOne Certified</dd></div>
+        <div><dt>studying</dt><dd>CompTIA Security+</dd></div>
+        <div><dt>degree</dt><dd>B.S. IT (Cyber), 2028</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <p class="label">// projects</p>
+    <h2>Security tools I've built</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="tag">email security</span>
+        <h3>Phishing Email Analyzer</h3>
+        <p>Examines suspicious emails (headers, sender details and links) and flags phishing indicators so an analyst can make a fast, documented call.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">email headers</span><span class="chip">IOCs</span></div>
+        <a class="more" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+      <article class="card">
+        <span class="tag">log analysis</span>
+        <h3>Windows Event Analyzer</h3>
+        <p>Parses Windows Event Logs and surfaces security-relevant activity, such as failed logons and account changes, in a readable summary.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Event Logs</span><span class="chip">triage</span></div>
+        <a class="more" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+      <article class="card">
+        <span class="tag">network</span>
+        <h3>Network Triage Tool</h3>
+        <p>Gathers a host's network connections and configuration in one pass to speed up first-response investigation.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">networking</span><span class="chip">IR</span></div>
+        <a class="more" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+      <article class="card">
+        <span class="tag">automation</span>
+        <h3>Log Analysis Scripts</h3>
+        <p>Parse authentication and system logs, extract key indicators and output structured results ready for investigation.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">auth logs</span><span class="chip">syslog</span></div>
+        <a class="more" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+      <article class="card">
+        <span class="tag">hardening</span>
+        <h3>Linux Security Hardening</h3>
+        <p>Baseline controls for Linux hosts: SSH configuration, file permissions and account policies.</p>
+        <div class="chips"><span class="chip">Linux</span><span class="chip">Bash</span><span class="chip">SSH</span></div>
+        <a class="more" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+    </div>
+
+    <p class="subhead">// development background</p>
+    <div class="grid">
+      <article class="card">
+        <span class="tag">web app</span>
+        <h3>Day Trip Planner Marketplace</h3>
+        <p>Full-stack PERN app (PostgreSQL, Express, React, Node) with full user authentication, tiered packages and a customer newsletter. Built at DevMountain.</p>
+        <div class="chips"><span class="chip">React</span><span class="chip">Node</span><span class="chip">PostgreSQL</span><span class="chip">auth</span></div>
+      </article>
+      <article class="card">
+        <span class="tag">web</span>
+        <h3>WordPress &amp; WooCommerce Builds</h3>
+        <p>Seven years of custom themes, plugin maintenance and deprecated-code cleanup for client stores, with secure practices built in.</p>
+        <div class="chips"><span class="chip">PHP</span><span class="chip">WooCommerce</span><span class="chip">SEO</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="label">// experience</p>
+    <h2>Where I've worked</h2>
+    <div class="timeline">
+      <div class="job">
+        <h3>Information Technology Support Engineer · AdvanTech</h3>
+        <p class="meta">Aug 2026 – Present · Gainesville, FL (Hybrid)</p>
+        <ul>
+          <li>Support endpoints for multiple managed clients across Windows, macOS and Linux.</li>
+          <li>Monitor device health and respond to alerts in NinjaOne RMM; work and escalate tickets in HaloPSA.</li>
+          <li>Apply hardening controls and configuration baselines; keep client documentation current in Hudu.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Deskside Support Team Lead · CSX</h3>
+        <p class="meta">Oct 2025 – Aug 2026 · Jacksonville, FL</p>
+        <ul>
+          <li>Led the deskside support team and mentored technicians on troubleshooting and escalation.</li>
+          <li>Investigated endpoint issues to separate hardware failure, user behavior, misconfiguration and possible security events.</li>
+          <li>Reviewed system logs and documented incidents to improve ticketing and escalation workflows.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Full-Stack Developer · Produced By Deuce, LLC</h3>
+        <p class="meta">Feb 2018 – Oct 2025 · Remote</p>
+        <ul>
+          <li>Built and maintained WordPress/WooCommerce sites, custom themes and plugins.</li>
+          <li>Applied input validation, authentication, session management and RBAC; contributed Python components.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Frontend Developer · Premium Peanut</h3>
+        <p class="meta">Mar 2022 – Jul 2022 · Remote</p>
+        <ul>
+          <li>Added stricter input validation and safer data flows to internal applications.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <p class="label">// skills</p>
+    <h2>Toolkit</h2>
+    <div class="skills">
+      <div class="skill-box">
+        <h3>security ops</h3>
+        <ul><li>Alert triage</li><li>Log analysis</li><li>Phishing analysis</li><li>Incident documentation</li><li>System hardening</li></ul>
+      </div>
+      <div class="skill-box">
+        <h3>systems &amp; network</h3>
+        <ul><li>Windows · macOS · Linux</li><li>TCP/IP, DNS, DHCP</li><li>Wireshark</li><li>Microsoft 365</li><li>Active Directory basics</li></ul>
+      </div>
+      <div class="skill-box">
+        <h3>tools</h3>
+        <ul><li>NinjaOne RMM</li><li>HaloPSA</li><li>Hudu</li><li>Git / GitHub</li><li>Docker · AWS</li></ul>
+      </div>
+      <div class="skill-box">
+        <h3>code</h3>
+        <ul><li>Python</li><li>Bash</li><li>JavaScript · Vue · React</li><li>SQL</li><li>Secure auth &amp; RBAC</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap">
+    <p class="label">// credentials</p>
+    <h2>Certifications &amp; education</h2>
+    <div class="creds">
+      <div class="cred">
+        <span class="pill ok">earned</span>
+        <h3>NinjaOne Certified Technician | MSP</h3>
+        <p class="when">Aug 2026 · valid through Aug 2027</p>
+      </div>
+      <div class="cred">
+        <span class="pill wip">in progress</span>
+        <h3>CompTIA Security+</h3>
+        <p class="when">Currently studying</p>
+      </div>
+      <div class="cred">
+        <span class="pill wip">in progress</span>
+        <h3>B.S. Information Technology, Cybersecurity</h3>
+        <p class="when">Strayer University · expected Mar 2028</p>
+      </div>
+      <div class="cred">
+        <span class="pill ok">completed</span>
+        <h3>Full-Stack Web Development</h3>
+        <p class="when">DevMountain · 2021</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="label">// contact</p>
+    <h2>Let's talk</h2>
+    <p>I'm looking for remote SOC Analyst and security-focused support roles. The fastest way to reach me is email.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:r.f.lynch@gmail.com">r.f.lynch@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/robertflynch" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>© <span id="yr">2026</span> Robert Lynch · robertlynch.dev</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
