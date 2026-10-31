@@ -105,6 +105,7 @@
   .card p { color: var(--muted); font-size: 15.5px; margin: 8px 0 16px; flex: 1; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
   .chip { font-family: var(--mono); font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 2px 8px; }
+  .dev { align-self: flex-start; font-family: var(--mono); font-size: 12.5px; color: var(--warn); background: rgba(245,184,77,.12); padding: 3px 10px; border-radius: 999px; }
   .card a.more { font-size: 14.5px; font-weight: 600; }
   .subhead { margin: 44px 0 18px; font-size: 15px; font-family: var(--mono); color: var(--muted); }
 
@@ -190,7 +191,7 @@
       <div>
         <p>I'm an IT Support Engineer at an MSP, where I support endpoints for multiple clients across Windows, macOS and Linux. Before that I led a deskside support team at CSX. Much of the job is investigation: working out whether a problem is hardware, the user, a misconfiguration, or something that needs a security review.</p>
         <p>I also spent seven years building and maintaining web applications. I've implemented authentication, input validation and role-based access control, so I understand how the systems I'm defending are put together.</p>
-        <p>I'm earning CompTIA Security+ and a B.S. in Information Technology (Cybersecurity) at Strayer University. Outside work I build my own security tools and practice on Hack The Box.</p>
+        <p>I'm earning CompTIA Security+ and a B.S. in Information Technology (Cybersecurity) at Strayer University. Outside work I'm building my own security tools and practicing on Hack The Box.</p>
       </div>
       <dl class="facts">
         <div><dt>role</dt><dd>IT Support Engineer</dd></div>
@@ -207,42 +208,40 @@
 <section id="projects">
   <div class="wrap">
     <p class="label">// projects</p>
-    <h2>Security tools I've built</h2>
+    <h2>Security projects</h2>
     <div class="grid">
       <article class="card">
         <span class="tag">email security</span>
         <h3>Phishing Email Analyzer</h3>
         <p>Examines suspicious emails (headers, sender details and links) and flags phishing indicators so an analyst can make a fast, documented call.</p>
         <div class="chips"><span class="chip">Python</span><span class="chip">email headers</span><span class="chip">IOCs</span></div>
-        <a class="more" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">View on GitHub →</a>
+        <span class="dev">In development</span>
       </article>
       <article class="card">
         <span class="tag">log analysis</span>
         <h3>Windows Event Analyzer</h3>
         <p>Parses Windows Event Logs and surfaces security-relevant activity, such as failed logons and account changes, in a readable summary.</p>
         <div class="chips"><span class="chip">Python</span><span class="chip">Event Logs</span><span class="chip">triage</span></div>
-        <a class="more" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">View on GitHub →</a>
+        <span class="dev">In development</span>
       </article>
       <article class="card">
         <span class="tag">network</span>
         <h3>Network Triage Tool</h3>
         <p>Gathers a host's network connections and configuration in one pass to speed up first-response investigation.</p>
         <div class="chips"><span class="chip">Python</span><span class="chip">networking</span><span class="chip">IR</span></div>
-        <a class="more" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">View on GitHub →</a>
+        <span class="dev">In development</span>
       </article>
       <article class="card">
         <span class="tag">automation</span>
         <h3>Log Analysis Scripts</h3>
         <p>Parse authentication and system logs, extract key indicators and output structured results ready for investigation.</p>
         <div class="chips"><span class="chip">Python</span><span class="chip">auth logs</span><span class="chip">syslog</span></div>
-        <a class="more" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">View on GitHub →</a>
       </article>
       <article class="card">
         <span class="tag">hardening</span>
         <h3>Linux Security Hardening</h3>
         <p>Baseline controls for Linux hosts: SSH configuration, file permissions and account policies.</p>
         <div class="chips"><span class="chip">Linux</span><span class="chip">Bash</span><span class="chip">SSH</span></div>
-        <a class="more" href="https://github.com/RobertLynch21" target="_blank" rel="noopener">View on GitHub →</a>
       </article>
     </div>
 
